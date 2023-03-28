@@ -271,3 +271,5 @@ View(Y)
 ysum1 <- apply(Y, 1, sum)
 plot(density(ysum1))
 
+
+#Here are a whole bunch more edits....
