@@ -106,7 +106,6 @@ list.of.betas <- list(betas.A, betas.B)
 array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
 #When we make it multiple-replications we're going to want to put the iterator for R in there
 #so array(data = NA, dim = c(N, 10, R, 6))
-counter <- 1
 
 #nested for loop to iterate through conditions
 for (g in 1:3) {
@@ -251,12 +250,13 @@ for (g in 1:3) {
       
 
       # hist(y, main = the.title)
+      counter <- (G-1)*6 + (B-1)*3 + N
+      #Following line needs to be revised for indexing
+      array.of.datasets[,,counter,c] <- y.mat
+
     }
-  array.of.datasets[,,counter] <- y.mat
   #names(list.of.datasets[[counter]]) <- paste0("Gamma: ", list.of.gammas[g], "beta: ", list.of.betas[b])
-      
-  counter <- counter + 1
-  }
+    }
 }
 
 #y1- equally spaced
