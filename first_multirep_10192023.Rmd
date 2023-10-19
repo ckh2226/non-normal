@@ -103,7 +103,7 @@ list.of.betas <- list(betas.A, betas.B)
 #Each will be an N x 10 matrix with above configurations of equal, mild, and severe
 
 #initialize empty list to store datasets
-array.of.datasets <- array(data = NA, dim = c(1000, 10, 6))
+array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
 #When we make it multiple-replications we're going to want to put the iterator for R in there
 #so array(data = NA, dim = c(N, 10, R, 6))
 counter <- 1
