@@ -134,8 +134,8 @@ for (g in 1:3) {
     for (n in 1:3) {
       N <- list.of.sizes[n]
       y.mat <- matrix(NA, N, 10)
-      
-      for (x in 1:10) {
+      for (c in 1:100) {
+        for (x in 1:10) {
 #      y <- rep(NA, N)
       x1 <- rnorm(N)
       x2 <- rbinom(N,1,.5) 
@@ -175,6 +175,8 @@ for (g in 1:3) {
           y.mat[a, x] <- 5
         }
       }
+      }
+      
       
     }
     
