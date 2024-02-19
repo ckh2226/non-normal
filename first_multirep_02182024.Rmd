@@ -1,0 +1,390 @@
+---
+title: "Document for creating histograms"
+author: "Cassi Hung"
+date: "2023-04-04"
+output: html_document
+---
+
+For this week, we are creating histograms for all of the possible values of ystar under each condition.
+
+```{r firsthistogram}
+library(lavaan)
+#Vary the sample size -- set value of N
+#Vary the degree of unequal thresholds -- choose between mild, moderate, and severe
+#Vary the size of the predictor effects of eta -- b1 and b2
+### 2 Conditions: [.1, .2, .9]; [.2, .4, .8]
+#Vary the link between eta and ystar - gamma1 and gamma2
+### 3 Conditions: [.4, .3]; [.8, .6]; [1.6, 1.2]
+# 
+# THE FOLLOWING IS A DEMONSTRATION OF HOW YOU WOULD USE A FOR LOOP HERE
+# YOU WOULD NEST EVERYTHING WITHIN THE FOR LOOP
+# gammas.A <- c(.4, .3)
+# gammas.B <- c(.8, .6)
+# gammas.C <- c(1.6, 1.2)
+# 
+# list.of.gammas <- list(gammas.A, gammas.B, gammas.C)
+# 
+# for (g in 1:3) {
+#   whatever.gamma <- list.of.gammas[[g]]
+#   gamma1 <- whatever.gamma[1]
+#   gamma.2 <- whatever.gamma[2]
+# }
+
+
+#step 1 - generate background variables
+#N <- 1000 #not going to change when we're just looking at histograms
+#list.of.sizes <- c(250, 500, 1000)
+##x1 <- rnorm(N)
+##x2 <- rbinom(N,1,.5) 
+
+
+# b1 <- .1
+# b2 <- .2
+# b3 <- .9
+# 
+# equal1 <- -1.8
+# equal2 <- -0.6
+# equal3 <- 0.6
+# equal4 <- 1.8
+# 
+# mild1 <- -1
+# mild2 <- -0.2
+# mild3 <- 1
+# mild4 <- 2.5
+# 
+# severe1 <- 1
+# severe2 <- 2
+# severe3 <- 2.5
+# severe4 <- 3
+
+
+#step 2 - generate eta
+# eta <- b1*x1 + b2*x2 + b3*rnorm(N)
+
+#step 3 - generate ystar
+
+# gamma1 <- .8
+# gamma2 <- .6
+
+# ystar1 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar2 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar3 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar4 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar5 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar6 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar7 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar8 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar9 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+# ystar10 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
+
+
+#generate y1...y10
+#create lists for varying conditions (thresholds, gammas, betas)
+# thresholds.equal <- c(-1.8, -0.6, 0.6, 1.8)
+# thresholds.mild <- c(-0.2, 1, 1.8, 2.4)
+# thresholds.severe <- c(1, 2, 2.5, 3)
+# list.of.thresholds <- list(thresholds.equal, thresholds.mild, thresholds.severe)
+# 
+# gammas.A <- c(.7, sqrt(.51))
+# gammas.B <- c(.8, .6)
+# gammas.C <- c(.9, sqrt(.19))
+# list.of.gammas <- list(gammas.A, gammas.B, gammas.C)
+# 
+# betas.A <- c(.1, .2, .9)
+# betas.B <- c(.2, .4, .8)
+# list.of.betas <- list(betas.A, betas.B)
+
+#y1, y2, y9, y10 = mild
+#y3, y4, y5 = equal
+#y6, y7, y8 = severe
+
+#Want to create 6 datasets, one for each combination of beta and gamma
+#But the thresholds will differ over the items, not over the datasets
+#Each will be an N x 10 matrix with above configurations of equal, mild, and severe
+
+#initialize empty list to store datasets
+array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
+#When we make it multiple-replications we're going to want to put the iterator for R in there
+#so array(data = NA, dim = c(N, 10, R, 6))
+  
+    
+
+
+#nested for loop to iterate through conditions
+# for (g in 1:3) {
+#   g.gammas <- list.of.gammas[[g]]
+#   gamma.1 <- g.gammas[1]
+#   gamma.2 <- g.gammas[2]
+#   
+#   for (b in 1:2) {
+#     b.betas <- list.of.betas[[b]]
+#     beta.1 <- b.betas[1]
+#     beta.2 <- b.betas[2]
+#     beta.3 <- b.betas[3]
+# 
+#     
+#     # I recommend making a 6-length list (initialize it as empty) and then appending empty.y.mat every time loop terminates
+#     # Look up list() and append()
+#     
+#     #For loop looping over the columns (i.e., for X in 1:10)
+#     #If X == 1, 2, 8, or 9, then define thresholds as mild
+#     #etc
+#     
+#     #y.mat <- matrix(NA, N, 10)
+#       
+#     
+#     #For loop iterating through sample sizes
+#     for (n in 1:3) {
+#       N <- list.of.sizes[n]
+#       y.mat <- matrix(NA, N, 10)
+#       for (c in 1:100) {
+#         for (x in 1:10) {
+# #      y <- rep(NA, N)
+#       x1 <- rnorm(N)
+#       x2 <- rbinom(N,1,.5) 
+#       eta <- beta.1*x1 + beta.2*x2 + beta.3*rnorm(N)
+#       ystar <- gamma.1*eta + gamma.2*rnorm(N, 0, sd(eta))
+#       
+#       if (x == 1 | x == 2 | x == 9 | x == 10) {
+#         threshold.1 <- thresholds.mild[1]
+#         threshold.2 <- thresholds.mild[2]
+#         threshold.3 <- thresholds.mild[3]
+#         threshold.4 <- thresholds.mild[4]
+#         print("mild")
+#       }  else if (x == 3 | x == 4 | x == 5) {
+#         threshold.1 <- thresholds.equal[1]
+#         threshold.2 <- thresholds.equal[2]
+#         threshold.3 <- thresholds.equal[3]
+#         threshold.4 <- thresholds.equal[4]
+#         print("equal")
+#       } else {
+#         threshold.1 <- thresholds.severe[1]
+#         threshold.2 <- thresholds.severe[2]
+#         threshold.3 <- thresholds.severe[3]
+#         threshold.4 <- thresholds.severe[4]
+#         print("severe")
+#       }
+#       
+#       for (a in 1:N) {
+#         if (ystar[a] <= threshold.1) {
+#           y.mat[a, x] <- 1
+#         } else if (ystar[a] <= threshold.2) {
+#           y.mat[a, x] <- 2
+#           } else if (ystar[a] <= threshold.3) {
+#           y.mat[a, x] <- 3
+#           } else if (ystar[a] <= threshold.4) {
+#           y.mat[a, x] <- 4
+#         } else {
+#           y.mat[a, x] <- 5
+#         }
+#       }
+#       }
+#       
+#       
+#     }
+    
+#    for (x in 1:10) {
+# #      y <- rep(NA, N)
+#       eta <- beta.1*x1 + beta.2*x2 + beta.3*rnorm(N)
+#       ystar <- gamma.1*eta + gamma.2*rnorm(N, 0, sd(eta))
+#       
+#       if (x == 1 | x == 2 | x == 9 | x == 10) {
+#         threshold.1 <- thresholds.mild[1]
+#         threshold.2 <- thresholds.mild[2]
+#         threshold.3 <- thresholds.mild[3]
+#         threshold.4 <- thresholds.mild[4]
+#         print("mild")
+#       }  else if (x == 3 | x == 4 | x == 5) {
+#         threshold.1 <- thresholds.equal[1]
+#         threshold.2 <- thresholds.equal[2]
+#         threshold.3 <- thresholds.equal[3]
+#         threshold.4 <- thresholds.equal[4]
+#         print("equal")
+#       } else {
+#         threshold.1 <- thresholds.severe[1]
+#         threshold.2 <- thresholds.severe[2]
+#         threshold.3 <- thresholds.severe[3]
+#         threshold.4 <- thresholds.severe[4]
+#         print("severe")
+#       }
+#       
+#       for (a in 1:N) {
+#         if (ystar[a] <= threshold.1) {
+#           y.mat[a, x] <- 1
+#         } else if (ystar[a] <= threshold.2) {
+#           y.mat[a, x] <- 2
+#           } else if (ystar[a] <= threshold.3) {
+#           y.mat[a, x] <- 3
+#           } else if (ystar[a] <= threshold.4) {
+#           y.mat[a, x] <- 4
+#         } else {
+#           y.mat[a, x] <- 5
+#         }
+#       }
+  
+  
+    # for (t in 1:3) {
+    #   t.thresholds <- list.of.thresholds[[t]]
+    #   threshold.1 <- t.thresholds[1]
+    #   threshold.2 <- t.thresholds[2]
+    #   threshold.3 <- t.thresholds[3]
+    #   threshold.4 <- t.thresholds[4]
+      # 
+      # y <- rep(NA, N)
+      # #eta <- beta.1*x1 + beta.2*x2 + beta.3*rnorm(N)
+      # ystar <- gamma.1*eta + gamma.2*rnorm(N, 0, sd(eta))
+      # 
+      # for (a in 1:N) {
+      #   if (ystar[a] <= threshold.1) {
+      #     y[a] = 1
+      #   }
+      #   else if (ystar[a] <= threshold.2) {
+      #     y[a] = 2
+      #     }
+      #   else if (ystar[a] <= threshold.3) {
+      #     y[a] = 3
+      #     }
+      #   else if (ystar[a] <= threshold.4) {
+      #     y[a] = 4
+      #   }
+      #   else {
+      #     y[a] = 5
+      #   }
+      # }
+      
+      
+      thresholds.equal <- c(-1.8, -0.6, 0.6, 1.8)
+      thresholds.mild <- c(-0.2, 1, 1.8, 2.4)
+      thresholds.severe <- c(1, 2, 2.5, 3)
+      list.of.thresholds <- list(thresholds.equal, thresholds.mild, thresholds.severe)
+
+      # hist(y, main = the.title)
+      #counter <- (G-1)*6 + (B-1)*3 + N
+      G <- c(1, 2, 3)
+      B <- c(1, 2)
+      N1 <- c(1, 2, 3)
+      for (g in G) {
+        if (g == 1) {
+          gammas <- c(1, .01)
+        }
+        else if (g == 2) {
+          gammas <- c(.8, .6)
+        }
+        else {
+          gammas <- c(.9, sqrt(.19))
+        }
+        for (b in B) {
+          if (b == 1) {
+            betas <- c(.1, .2, .9)
+          }
+          else {
+            betas <- c(.2, .4, .8)
+          }
+          for (n in N1) {
+            if (n == 1) {
+              N <- 250
+            }
+            else if (n == 2) {
+              N <- 500
+            }
+            else {
+              N <- 1000
+            }
+            counter <- (g-1)*6 + (b-1)*3 + n
+            for (c in 1:100) {
+              y.mat <- matrix(NA, N, 10)
+              for (x in 1:10) {
+                x1 <- rnorm(N)
+                x2 <- rbinom(N,1,.5) 
+                eta <- betas[[1]]*x1 + betas[[2]]*x2 + betas[[3]]*rnorm(N)
+                ystar <- gammas[[1]]*eta + gammas[[2]]*rnorm(N, 0, sd(eta))
+                if (x == 1 | x == 2 | x == 9 | x == 10) {
+                  threshold.1 <- thresholds.mild[1]
+                  threshold.2 <- thresholds.mild[2]
+                  threshold.3 <- thresholds.mild[3]
+                  threshold.4 <- thresholds.mild[4]
+                  }  
+                else if (x == 3 | x == 4 | x == 5) {
+                  threshold.1 <- thresholds.equal[1]
+                  threshold.2 <- thresholds.equal[2]
+                  threshold.3 <- thresholds.equal[3]
+                  threshold.4 <- thresholds.equal[4]
+                  } 
+                else {
+                  threshold.1 <- thresholds.severe[1]
+                  threshold.2 <- thresholds.severe[2]
+                  threshold.3 <- thresholds.severe[3]
+                  threshold.4 <- thresholds.severe[4]
+                }
+                
+                for (a in 1:N) {
+                  if (ystar[a] <= threshold.1) {
+                    y.mat[a, x] <- 1
+                   } 
+                  else if (ystar[a] <= threshold.2) {
+                    y.mat[a, x] <- 2
+                    } 
+                  else if (ystar[a] <= threshold.3) {
+                    y.mat[a, x] <- 3
+                    } 
+                  else if (ystar[a] <= threshold.4) {
+                    y.mat[a, x] <- 4
+                    } 
+                  else {
+                    y.mat[a, x] <- 5
+                  }
+                }
+                array.of.datasets[1:nrow(y.mat),, counter, c] <- y.mat
+                #print(counter)
+                }
+      
+      
+    }
+            }
+            #counter <- (g-1)*6 + (b-1)*3 + n
+            #print(counter)
+          }
+        }
+      #}
+      
+      #Following line needs to be revised for indexing
+      #array.of.datasets[,,counter,c] <- y.mat
+
+   # }
+  #names(list.of.datasets[[counter]]) <- paste0("Gamma: ", list.of.gammas[g], "beta: ", list.of.betas[b])
+    #}
+#}
+
+#y1- equally spaced
+# y1<-rep(NA, N)
+# 
+# for (a in 1:N) {
+#   if (ystar1[a] <= equal1) {
+#     y1[a] = 1
+#   }
+#   else if (ystar1[a] <= equal2) {
+#     y1[a] = 2
+#   }
+#   else if (ystar1[a] <= equal3) {
+#     y1[a] = 3;
+#   }
+#   else if (ystar1[a] <= equal4) {
+#     y1[a] = 4
+#   }
+#   else {
+#     y1[a] = 5
+#   }
+# }
+# hist(y1)
+
+```
+
+```{r}
+
+#changed variable names to match data frame
+confirmatoryFA.model <- 'eta  =~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10'
+#figure out indexing- currently appears to be first 10 samples of size 250
+y_data <- data.frame(array.of.datasets[,,1,1])
+fit <- cfa(confirmatoryFA.model, y_data)
+
+```
