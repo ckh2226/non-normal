@@ -1,0 +1,33 @@
+
+TITLE: Test with 10 reps
+
+DATA:
+File is 
+G2_B2_N2_rep147.csv;
+    
+VARIABLE: 
+    Names are x1 x2 eta 
+	y1 y2 y3 y4 y5 y6 y7 y8 y9 y10;
+    Usevariables are y1-y10 x1 x2;
+    constraint = x1 x2;
+
+MODEL:
+    f BY y1* (l1);
+    f BY y2* (l2);
+    f BY y3* (l3);
+    f BY y4* (l4);
+    f BY y5* (l5);
+    f BY y6* (l6);
+    f BY y7* (l7);
+    f BY y8* (l8);
+    f BY y9* (l9);
+    f BY y10* (l10);
+
+y2 ON x1 x2;
+f@1;
+[f@0];
+
+MODEL CONSTRAINT:
+    new (l2_0 l2_1 l2_2);
+    l2 = l2_0 + l2_1*x1 + l2_2*x2;
+

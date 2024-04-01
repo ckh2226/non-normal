@@ -26,12 +26,12 @@ library(lavaan)
 #Each will be an N x 10 matrix with above configurations of equal, mild, and severe
 
 #initialize empty list to store datasets
-array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
+#array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 500))
 #When we make it multiple-replications we're going to want to put the iterator for R in there
 #so array(data = NA, dim = c(N, 10, R, 6))
   
     
-
+setwd("C:/Users/colev/Dropbox/collab_2023/Cassi/non-normal/data")
 
 #nested for loop to iterate through conditions
 # for (g in 1:3) {
@@ -208,8 +208,10 @@ array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
               } else {
                 N <- 1000
               }
+          the.directory <- paste0("G",g,"_B",b,"_N",n)
+          if (dir.exists(the.directory) == FALSE) {dir.create(the.directory)}
           counter <- (g-1)*6 + (b-1)*3 + n
-            for (c in 1:100) {
+            for (c in 1:500) {
               #VTC moved these outside the for loop -- was redefining eta for each column! 
               y.mat <- matrix(NA, N, 10)
               x1 <- rnorm(N)
@@ -253,9 +255,12 @@ array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
                     y.mat[a, x] <- 5
                   }
                 }
-                array.of.datasets[1:nrow(y.mat),, counter, c] <- y.mat
+                #array.of.datasets[1:nrow(y.mat),, counter, c] <- y.mat
                 #print(counter)
-                }
+              }
+              y.mat <- cbind(x1, x2, eta, y.mat)
+              the.filename <- paste0(the.directory, "/", "G",g,"_B",b,"_N",n,"_rep",c,".csv")
+              write.table(y.mat, file = the.filename, sep = ",", row.names = FALSE, col.names = FALSE)
               }
             }
             #counter <- (g-1)*6 + (b-1)*3 + n
