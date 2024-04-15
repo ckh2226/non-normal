@@ -1,0 +1,64 @@
+---
+title: "Mplus Data"
+author: "Cassandra Hung"
+date: "2024-04-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, warning = FALSE, message = FALSE}
+# setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+
+library(MplusAutomation)
+library(tidyverse)
+
+#path <- "G1_B1_N1/rep1_g1_b1_n1_item1.out"
+# output <- readModels("G1_B1_N1/rep1_g1_b1_n1_item1.out")
+# output_data <- as.data.frame(output$parameters)
+# 
+# data <- output_data |>
+#   filter((unstandardized.paramHeader == "New.Additional.Parameters") | (unstandardized.paramHeader == "Y1.ON")) |>
+#   mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "rep\\d+"), item = str_extract(path, "item\\d+"))
+  
+library(data.table) 
+library(rlist)
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G1_B1_N1/rep", i, "_g1_b1_n1_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+
+
+
+# data <- output$parameters
+# data <- as.data.frame(data)
+```
+
+
