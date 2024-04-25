@@ -9,6 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+1. G1, B1, N1
 ```{r, warning = FALSE, message = FALSE}
 # setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
@@ -61,4 +62,567 @@ final_data <- rbindlist(data_list)
 # data <- as.data.frame(data)
 ```
 
+2. G1, B1, N2
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
 
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G1_B1_N2/rep", i, "_g1_b1_n2_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+3. G1, B1, N3
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G1_B1_N3/rep", i, "_g1_b1_n3_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+
+4. G1, B2, N1
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G1_B2_N1/rep", i, "_g1_b2_n1_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+
+5. G1, B2, N2
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G1_B2_N2/rep", i, "_g1_b2_n2_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+
+6. G1, B2, N3
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G1_B2_N3/rep", i, "_g1_b2_n3_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+7. G2, B1, N1
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G2_B1_N1/rep", i, "_g2_b1_n1_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+8. G2, B1, N2
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G2_B1_N2/rep", i, "_g2_b1_n2_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+9. G2, B1, N3
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G2_B1_N3/rep", i, "_g2_b1_n3_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+
+10. G2, B2, N1
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G2_B2_N1/rep", i, "_g2_b2_n1_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+11. G2, B2, N2
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G2_B2_N2/rep", i, "_g2_b2_n2_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+12. G2, B2, N3
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G2_B2_N3/rep", i, "_g2_b2_n3_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+13. G3, B1, N1
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G3_B1_N1/rep", i, "_g3_b1_n1_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+14. G3, B1, N2
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G3_B1_N2/rep", i, "_g3_b1_n2_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+15. G3, B1, N3
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G3_B1_N3/rep", i, "_g3_b1_n3_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+16. G3, B2, N1
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G3_B2_N1/rep", i, "_g3_b2_n1_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+17. G3, B2, N2
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G3_B2_N2/rep", i, "_g3_b2_n2_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
+
+18. G3, B2, N3
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+#vector to store/iterate through reps
+reps <- 1:500
+#vector to store/iterate through items
+item <- 1:10
+
+data_list <- list()
+
+
+for (i in 1:length(reps)) {
+  for(j in 1:length(item)) {
+  path <- paste0("G3_B2_N3/rep", i, "_g3_b2_n3_item", j, ".out")
+  output <- readModels(path)$parameters$unstandardized
+  
+  output_data <- as.data.frame(output)
+    
+  y <- paste0("Y", j, ".ON")
+    
+  data <- output_data |>
+  filter((paramHeader == "New.Additional.Parameters")| (paramHeader == y)) |>
+    mutate(condition = str_extract(path, ".+(?=/)"), rep = str_extract(path, "(?<=rep)\\d+"), item = str_extract(path, "(?<=item)\\d+"))
+    
+  #add data frame to list
+  data_list <- list.append(data_list, as.data.frame(data))
+  }
+}
+
+##rbind data_list
+final_data <- rbindlist(data_list)
+```
