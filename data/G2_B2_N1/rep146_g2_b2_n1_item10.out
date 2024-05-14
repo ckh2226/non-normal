@@ -1,0 +1,445 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/24/2024  12:00 PM
+
+INPUT INSTRUCTIONS
+
+
+  TITLE: Test with 10 reps
+
+  DATA:
+  File is
+  G2_B2_N1_rep146.csv;
+
+  VARIABLE:
+      Names are x1 x2 eta
+  	y1 y2 y3 y4 y5 y6 y7 y8 y9 y10;
+      Usevariables are y1-y10 x1 x2;
+      constraint = x1 x2;
+
+  MODEL:
+      f BY y1* (l1);
+      f BY y2* (l2);
+      f BY y3* (l3);
+      f BY y4* (l4);
+      f BY y5* (l5);
+      f BY y6* (l6);
+      f BY y7* (l7);
+      f BY y8* (l8);
+      f BY y9* (l9);
+      f BY y10* (l10);
+
+  y10 ON x1 x2;
+  f@1;
+  [f@0];
+
+  MODEL CONSTRAINT:
+      new (l10_0 l10_1 l10_2);
+      l10 = l10_0 + l10_1*x1 + l10_2*x2;
+
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Test with 10 reps
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         250
+
+Number of dependent variables                                   10
+Number of independent variables                                  2
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   Y1          Y2          Y3          Y4          Y5          Y6
+   Y7          Y8          Y9          Y10
+
+Observed independent variables
+   X1          X2
+
+Continuous latent variables
+   F
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  G2_B2_N1_rep146.csv
+
+Input data format  FREE
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     Y1                    1.852       0.842       1.000   32.00%       1.000      2.000      2.000
+             250.000       0.542       1.312       5.000    0.40%       2.000      2.000
+     Y2                    1.836       0.582       1.000   32.80%       1.000      2.000      2.000
+             250.000       0.505       0.241       4.000    2.00%       2.000      2.000
+     Y3                    3.168       0.123       1.000    0.80%       3.000      3.000      3.000
+             250.000       0.556       0.181       5.000    3.60%       3.000      4.000
+     Y4                    3.152      -0.033       1.000    1.20%       3.000      3.000      3.000
+             250.000       0.625      -0.186       5.000    3.20%       3.000      4.000
+     Y5                    3.052       0.159       1.000    1.20%       2.000      3.000      3.000
+             250.000       0.681      -0.349       5.000    3.60%       3.000      4.000
+     Y6                    1.144       3.170       1.000   86.80%       1.000      1.000      1.000
+             250.000       0.155      12.786       4.000    0.40%       1.000      1.000
+     Y7                    1.208       2.737       1.000   82.00%       1.000      1.000      1.000
+             250.000       0.237       9.033       4.000    0.80%       1.000      1.000
+     Y8                    1.148       1.983       1.000   85.20%       1.000      1.000      1.000
+             250.000       0.126       1.930       2.000   14.80%       1.000      1.000
+     Y9                    1.896       0.681       1.000   30.80%       1.000      2.000      2.000
+             250.000       0.565       0.718       5.000    0.40%       2.000      2.000
+     Y10                   1.868       0.738       1.000   34.40%       1.000      2.000      2.000
+             250.000       0.611       0.556       5.000    0.40%       2.000      2.000
+     X1                    0.093       0.047      -2.528    0.40%      -0.774     -0.173      0.059
+             250.000       0.996      -0.168       3.441    0.40%       0.336      0.948
+     X2                    0.492       0.032       0.000   50.80%       0.000      0.000      0.000
+             250.000       0.250      -1.999       1.000   49.20%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.505D-13.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 35, L10_2
+
+     THIS IS MOST LIKELY DUE TO VARIABLE Y8 BEING DICHOTOMOUS BUT
+     DECLARED AS CONTINUOUS.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       34
+
+Loglikelihood
+
+          H0 Value                       -1914.740
+
+Information Criteria
+
+          Akaike (AIC)                    3897.481
+          Bayesian (BIC)                  4017.210
+          Sample-Size Adjusted BIC        3909.428
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F        BY
+    Y1                 0.489      0.043     11.350      0.000
+    Y2                 0.509      0.040     12.577      0.000
+    Y3                 0.548      0.042     13.030      0.000
+    Y4                 0.578      0.045     12.919      0.000
+    Y5                 0.591      0.047     12.555      0.000
+    Y6                 0.213      0.024      8.808      0.000
+    Y7                 0.295      0.029     10.096      0.000
+    Y8                 0.168      0.022      7.534      0.000
+    Y9                 0.560      0.042     13.259      0.000
+    Y10              999.000      0.000    999.000    999.000
+
+ Y10      ON
+    X1                 0.017      0.038      0.448      0.654
+    X2                 0.130      0.074      1.754      0.079
+
+ Means
+    F                  0.000      0.000    999.000    999.000
+
+ Intercepts
+    Y1                 1.852      0.047     39.772      0.000
+    Y2                 1.836      0.045     40.846      0.000
+    Y3                 3.168      0.047     67.190      0.000
+    Y4                 3.152      0.050     63.045      0.000
+    Y5                 3.052      0.052     58.464      0.000
+    Y6                 1.144      0.025     45.905      0.000
+    Y7                 1.208      0.031     39.256      0.000
+    Y8                 1.148      0.022     51.116      0.000
+    Y9                 1.896      0.048     39.876      0.000
+    Y10                1.785      0.060     29.775      0.000
+
+ Variances
+    F                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    Y1                 0.303      0.030     10.161      0.000
+    Y2                 0.246      0.025      9.814      0.000
+    Y3                 0.255      0.026      9.642      0.000
+    Y4                 0.291      0.030      9.666      0.000
+    Y5                 0.332      0.034      9.804      0.000
+    Y6                 0.110      0.010     10.618      0.000
+    Y7                 0.150      0.014     10.414      0.000
+    Y8                 0.098      0.009     10.801      0.000
+    Y9                 0.252      0.026      9.542      0.000
+    Y10                0.294      0.030      9.900      0.000
+
+New/Additional Parameters
+    L10_0              0.504      0.060      8.389      0.000
+    L10_1              0.072      0.034      2.105      0.035
+    L10_2              0.043      0.078      0.555      0.579
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.813E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              Y1            Y2            Y3            Y4            Y5
+              ________      ________      ________      ________      ________
+                  1             2             3             4             5
+
+
+           NU
+              Y6            Y7            Y8            Y9            Y10
+              ________      ________      ________      ________      ________
+                  6             7             8             9             0
+
+
+           NU
+              X1            X2
+              ________      ________
+                  0             0
+
+
+           LAMBDA
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+ Y1                10             0             0             0
+ Y2                11             0             0             0
+ Y3                12             0             0             0
+ Y4                13             0             0             0
+ Y5                14             0             0             0
+ Y6                15             0             0             0
+ Y7                16             0             0             0
+ Y8                17             0             0             0
+ Y9                18             0             0             0
+ Y10                0             0             0             0
+ X1                 0             0             0             0
+ X2                 0             0             0             0
+
+
+           THETA
+              Y1            Y2            Y3            Y4            Y5
+              ________      ________      ________      ________      ________
+ Y1                19
+ Y2                 0            20
+ Y3                 0             0            21
+ Y4                 0             0             0            22
+ Y5                 0             0             0             0            23
+ Y6                 0             0             0             0             0
+ Y7                 0             0             0             0             0
+ Y8                 0             0             0             0             0
+ Y9                 0             0             0             0             0
+ Y10                0             0             0             0             0
+ X1                 0             0             0             0             0
+ X2                 0             0             0             0             0
+
+
+           THETA
+              Y6            Y7            Y8            Y9            Y10
+              ________      ________      ________      ________      ________
+ Y6                24
+ Y7                 0            25
+ Y8                 0             0            26
+ Y9                 0             0             0            27
+ Y10                0             0             0             0             0
+ X1                 0             0             0             0             0
+ X2                 0             0             0             0             0
+
+
+           THETA
+              X1            X2
+              ________      ________
+ X1                 0
+ X2                 0             0
+
+
+           ALPHA
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+                  0            28             0             0
+
+
+           BETA
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+ F                  0             0             0             0
+ Y10               29             0            30            31
+ X1                 0             0             0             0
+ X2                 0             0             0             0
+
+
+           PSI
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+ F                  0
+ Y10                0            32
+ X1                 0             0             0
+ X2                 0             0             0             0
+
+
+     PARAMETER SPECIFICATION FOR THE ADDITIONAL PARAMETERS
+
+
+           New/Additional Parameters
+              L10_0         L10_1         L10_2
+              ________      ________      ________
+                   33            34            35
+
+
+     STARTING VALUES
+
+
+           NU
+              Y1            Y2            Y3            Y4            Y5
+              ________      ________      ________      ________      ________
+                1.852         1.836         3.168         3.152         3.052
+
+
+           NU
+              Y6            Y7            Y8            Y9            Y10
+              ________      ________      ________      ________      ________
+                1.144         1.208         1.148         1.896         0.000
+
+
+           NU
+              X1            X2
+              ________      ________
+                0.000         0.000
+
+
+           LAMBDA
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+ Y1             1.000         0.000         0.000         0.000
+ Y2             1.000         0.000         0.000         0.000
+ Y3             1.000         0.000         0.000         0.000
+ Y4             1.000         0.000         0.000         0.000
+ Y5             1.000         0.000         0.000         0.000
+ Y6             1.000         0.000         0.000         0.000
+ Y7             1.000         0.000         0.000         0.000
+ Y8             1.000         0.000         0.000         0.000
+ Y9             1.000         0.000         0.000         0.000
+ Y10            0.000         1.000         0.000         0.000
+ X1             0.000         0.000         1.000         0.000
+ X2             0.000         0.000         0.000         1.000
+
+
+           THETA
+              Y1            Y2            Y3            Y4            Y5
+              ________      ________      ________      ________      ________
+ Y1             0.271
+ Y2             0.000         0.253
+ Y3             0.000         0.000         0.278
+ Y4             0.000         0.000         0.000         0.312
+ Y5             0.000         0.000         0.000         0.000         0.341
+ Y6             0.000         0.000         0.000         0.000         0.000
+ Y7             0.000         0.000         0.000         0.000         0.000
+ Y8             0.000         0.000         0.000         0.000         0.000
+ Y9             0.000         0.000         0.000         0.000         0.000
+ Y10            0.000         0.000         0.000         0.000         0.000
+ X1             0.000         0.000         0.000         0.000         0.000
+ X2             0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              Y6            Y7            Y8            Y9            Y10
+              ________      ________      ________      ________      ________
+ Y6             0.078
+ Y7             0.000         0.118
+ Y8             0.000         0.000         0.063
+ Y9             0.000         0.000         0.000         0.283
+ Y10            0.000         0.000         0.000         0.000         0.000
+ X1             0.000         0.000         0.000         0.000         0.000
+ X2             0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              X1            X2
+              ________      ________
+ X1             0.000
+ X2             0.000         0.000
+
+
+           ALPHA
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+                0.000         1.868         0.093         0.492
+
+
+           BETA
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+ F              0.000         0.000         0.000         0.000
+ Y10            1.000         0.000         0.000         0.000
+ X1             0.000         0.000         0.000         0.000
+ X2             0.000         0.000         0.000         0.000
+
+
+           PSI
+              F             Y10           X1            X2
+              ________      ________      ________      ________
+ F              1.000
+ Y10            0.000         0.305
+ X1             0.000         0.000         0.996
+ X2             0.000         0.000        -0.007         0.250
+
+
+     STARTING VALUES FOR THE ADDITIONAL PARAMETERS
+
+
+           New/Additional Parameters
+              L10_0         L10_1         L10_2
+              ________      ________      ________
+                0.500         0.500         0.500
+
+
+     Beginning Time:  12:00:06
+        Ending Time:  12:00:07
+       Elapsed Time:  00:00:01
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

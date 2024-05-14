@@ -1,0 +1,217 @@
+Mplus VERSION 8.3
+MUTHEN & MUTHEN
+04/25/2024   8:11 AM
+
+INPUT INSTRUCTIONS
+
+
+  TITLE: Test with 10 reps
+
+  DATA:
+  File is
+  G3_B2_N2_rep357.csv;
+
+  VARIABLE:
+      Names are x1 x2 eta
+  	y1 y2 y3 y4 y5 y6 y7 y8 y9 y10;
+      Usevariables are y1-y10 x1 x2;
+      constraint = x1 x2;
+
+  MODEL:
+      f BY y1* (l1);
+      f BY y2* (l2);
+      f BY y3* (l3);
+      f BY y4* (l4);
+      f BY y5* (l5);
+      f BY y6* (l6);
+      f BY y7* (l7);
+      f BY y8* (l8);
+      f BY y9* (l9);
+      f BY y10* (l10);
+
+  y2 ON x1 x2;
+  f@1;
+  [f@0];
+
+  MODEL CONSTRAINT:
+      new (l2_0 l2_1 l2_2);
+      l2 = l2_0 + l2_1*x1 + l2_2*x2;
+
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Test with 10 reps
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         500
+
+Number of dependent variables                                   10
+Number of independent variables                                  2
+Number of continuous latent variables                            1
+
+Observed dependent variables
+
+  Continuous
+   Y1          Y2          Y3          Y4          Y5          Y6
+   Y7          Y8          Y9          Y10
+
+Observed independent variables
+   X1          X2
+
+Continuous latent variables
+   F
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  G3_B2_N2_rep357.csv
+
+Input data format  FREE
+
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     Y1                    1.886       0.793       1.000   33.00%       1.000      2.000      2.000
+             500.000       0.621       0.719       5.000    0.40%       2.000      2.000
+     Y2                    1.856       0.583       1.000   34.00%       1.000      2.000      2.000
+             500.000       0.563      -0.027       4.000    2.40%       2.000      2.000
+     Y3                    3.116      -0.138       1.000    1.40%       3.000      3.000      3.000
+             500.000       0.567      -0.055       5.000    1.80%       3.000      4.000
+     Y4                    3.154       0.069       1.000    0.60%       3.000      3.000      3.000
+             500.000       0.594      -0.255       5.000    3.20%       3.000      4.000
+     Y5                    3.126       0.088       1.000    0.80%       3.000      3.000      3.000
+             500.000       0.550       0.064       5.000    2.80%       3.000      4.000
+     Y6                    1.166       2.967       1.000   85.60%       1.000      1.000      1.000
+             500.000       0.190      10.180       4.000    0.40%       1.000      1.000
+     Y7                    1.178       2.459       1.000   83.60%       1.000      1.000      1.000
+             500.000       0.178       6.664       4.000    0.20%       1.000      1.000
+     Y8                    1.160       2.076       1.000   84.40%       1.000      1.000      1.000
+             500.000       0.142       3.020       3.000    0.40%       1.000      1.000
+     Y9                    1.822       0.562       1.000   36.20%       1.000      2.000      2.000
+             500.000       0.550      -0.174       4.000    1.80%       2.000      2.000
+     Y10                   1.840       0.706       1.000   34.20%       1.000      2.000      2.000
+             500.000       0.550       0.734       5.000    0.40%       2.000      2.000
+     X1                    0.041       0.100      -2.578    0.20%      -0.793     -0.206      0.037
+             500.000       0.954       0.016       3.285    0.20%       0.259      0.849
+     X2                    0.498       0.008       0.000   50.20%       0.000      0.000      0.000
+             500.000       0.250      -2.000       1.000   49.80%       1.000      1.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       34
+
+Loglikelihood
+
+          H0 Value                       -3077.084
+
+Information Criteria
+
+          Akaike (AIC)                    6222.168
+          Bayesian (BIC)                  6365.465
+          Sample-Size Adjusted BIC        6257.547
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ F        BY
+    Y1                 0.661      0.029     22.939      0.000
+    Y2               999.000      0.000    999.000    999.000
+    Y3                 0.602      0.028     21.279      0.000
+    Y4                 0.652      0.028     23.189      0.000
+    Y5                 0.605      0.028     21.932      0.000
+    Y6                 0.292      0.018     16.583      0.000
+    Y7                 0.284      0.017     16.701      0.000
+    Y8                 0.241      0.015     15.630      0.000
+    Y9                 0.613      0.027     22.396      0.000
+    Y10                0.601      0.028     21.696      0.000
+
+ Y2       ON
+    X1                 0.018      0.021      0.863      0.388
+    X2                -0.064      0.041     -1.565      0.118
+
+ Means
+    F                  0.000      0.000    999.000    999.000
+
+ Intercepts
+    Y1                 1.886      0.035     53.516      0.000
+    Y2                 1.890      0.041     46.232      0.000
+    Y3                 3.116      0.034     92.569      0.000
+    Y4                 3.154      0.034     91.485      0.000
+    Y5                 3.126      0.033     94.242      0.000
+    Y6                 1.166      0.020     59.745      0.000
+    Y7                 1.178      0.019     62.379      0.000
+    Y8                 1.160      0.017     68.737      0.000
+    Y9                 1.822      0.033     54.920      0.000
+    Y10                1.840      0.033     55.458      0.000
+
+ Variances
+    F                  1.000      0.000    999.000    999.000
+
+ Residual Variances
+    Y1                 0.183      0.013     13.608      0.000
+    Y2                 0.170      0.012     13.669      0.000
+    Y3                 0.204      0.014     14.144      0.000
+    Y4                 0.170      0.013     13.464      0.000
+    Y5                 0.184      0.013     13.962      0.000
+    Y6                 0.105      0.007     15.010      0.000
+    Y7                 0.098      0.007     15.014      0.000
+    Y8                 0.084      0.006     15.154      0.000
+    Y9                 0.174      0.013     13.810      0.000
+    Y10                0.190      0.013     14.053      0.000
+
+New/Additional Parameters
+    L2_0               0.657      0.037     17.891      0.000
+    L2_1               0.025      0.021      1.210      0.226
+    L2_2              -0.060      0.043     -1.408      0.159
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.306E-04
+       (ratio of smallest to largest eigenvalue)
+
+
+     Beginning Time:  08:10:59
+        Ending Time:  08:11:02
+       Elapsed Time:  00:00:03
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen
