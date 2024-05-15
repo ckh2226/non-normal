@@ -10,7 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r, warning = FALSE, message = FALSE}
-# setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 library(MplusAutomation)
 library(tidyverse)
@@ -25,7 +24,7 @@ library(tidyverse)
   
 library(data.table) 
 library(rlist)
-setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+setwd("/Users/colev/Dropbox/collab_2023/Cassi/non-normal/data")
 #vector to store/iterate through reps
 reps <- 1:500
 #vector to store/iterate through items
@@ -62,3 +61,159 @@ final_data <- rbindlist(data_list)
 ```
 
 
+```{r}
+
+y1.x1.int <- subset(final_data, final_data$paramHeader == "Y1.ON" & param == "X1")
+mean(y1.x1.int$pval < .05)
+
+y2.x1.int <- subset(final_data, final_data$paramHeader == "Y2.ON" & param == "X1")
+mean(y2.x1.int$pval < .05)
+
+y3.x1.int <- subset(final_data, final_data$paramHeader == "Y3.ON" & param == "X1")
+mean(y3.x1.int$pval < .05)
+
+y4.x1.int <- subset(final_data, final_data$paramHeader == "Y4.ON" & param == "X1")
+mean(y4.x1.int$pval < .05)
+
+y5.x1.int <- subset(final_data, final_data$paramHeader == "Y5.ON" & param == "X1")
+mean(y5.x1.int$pval < .05)
+
+y6.x1.int <- subset(final_data, final_data$paramHeader == "Y6.ON" & param == "X1")
+mean(y6.x1.int$pval < .05)
+
+y7.x1.int <- subset(final_data, final_data$paramHeader == "Y7.ON" & param == "X1")
+mean(y7.x1.int$pval < .05)
+
+y8.x1.int <- subset(final_data, final_data$paramHeader == "Y8.ON" & param == "X1")
+mean(y8.x1.int$pval < .05)
+
+y9.x1.int <- subset(final_data, final_data$paramHeader == "Y9.ON" & param == "X1")
+mean(y9.x1.int$pval < .05)
+
+y10.x1.int <- subset(final_data, final_data$paramHeader == "Y10.ON" & param == "X1")
+mean(y10.x1.int$pval < .05)
+
+
+
+y1.x2.int <- subset(final_data, final_data$paramHeader == "Y1.ON" & param == "X2")
+mean(y1.x2.int$pval < .05)
+
+y2.x2.int <- subset(final_data, final_data$paramHeader == "Y2.ON" & param == "X2")
+mean(y2.x2.int$pval < .05)
+
+y3.x2.int <- subset(final_data, final_data$paramHeader == "Y3.ON" & param == "X2")
+mean(y3.x2.int$pval < .05)
+
+y4.x2.int <- subset(final_data, final_data$paramHeader == "Y4.ON" & param == "X2")
+mean(y4.x2.int$pval < .05)
+
+y5.x2.int <- subset(final_data, final_data$paramHeader == "Y5.ON" & param == "X2")
+mean(y5.x2.int$pval < .05)
+
+y6.x2.int <- subset(final_data, final_data$paramHeader == "Y6.ON" & param == "X2")
+mean(y6.x2.int$pval < .05)
+
+y7.x2.int <- subset(final_data, final_data$paramHeader == "Y7.ON" & param == "X2")
+mean(y7.x2.int$pval < .05)
+
+y8.x2.int <- subset(final_data, final_data$paramHeader == "Y8.ON" & param == "X2")
+mean(y8.x2.int$pval < .05)
+
+y9.x2.int <- subset(final_data, final_data$paramHeader == "Y9.ON" & param == "X2")
+mean(y9.x2.int$pval < .05)
+
+y10.x2.int <- subset(final_data, final_data$paramHeader == "Y10.ON" & param == "X2")
+mean(y10.x2.int$pval < .05)
+
+
+y1.x2.load <- subset(final_data, final_data$param == "L1_2")
+mean(y1.x2.load$pval < .05)
+y2.x2.load <- subset(final_data, final_data$param == "L2_2")
+mean(y2.x2.load$pval < .05)
+y3.x2.load <- subset(final_data, final_data$param == "L3_2")
+mean(y3.x2.load$pval < .05)
+y4.x2.load <- subset(final_data, final_data$param == "L4_2")
+mean(y4.x2.load$pval < .05)
+y5.x2.load <- subset(final_data, final_data$param == "L5_2")
+mean(y5.x2.load$pval < .05)
+y6.x2.load <- subset(final_data, final_data$param == "L6_2")
+mean(y6.x2.load$pval < .05)
+y7.x2.load <- subset(final_data, final_data$param == "L7_2")
+mean(y7.x2.load$pval < .05)
+y8.x2.load <- subset(final_data, final_data$param == "L8_2")
+mean(y8.x2.load$pval < .05)
+y9.x2.load <- subset(final_data, final_data$param == "L9_2")
+mean(y9.x2.load$pval < .05)
+y10.x2.load <- subset(final_data, final_data$param == "L10_2")
+mean(y10.x2.load$pval < .05)
+
+y1.x1.load <- subset(final_data, final_data$param == "L1_1")
+mean(y1.x1.load$pval < .05)
+y2.x1.load <- subset(final_data, final_data$param == "L2_1")
+mean(y2.x1.load$pval < .05)
+y3.x1.load <- subset(final_data, final_data$param == "L3_1")
+mean(y3.x1.load$pval < .05)
+y4.x1.load <- subset(final_data, final_data$param == "L4_1")
+mean(y4.x1.load$pval < .05)
+y5.x1.load <- subset(final_data, final_data$param == "L5_1")
+mean(y5.x1.load$pval < .05)
+y6.x1.load <- subset(final_data, final_data$param == "L6_1")
+mean(y6.x1.load$pval < .05)
+y7.x1.load <- subset(final_data, final_data$param == "L7_1")
+mean(y7.x1.load$pval < .05)
+y8.x1.load <- subset(final_data, final_data$param == "L8_1")
+mean(y8.x1.load$pval < .05)
+y9.x1.load <- subset(final_data, final_data$param == "L9_1")
+mean(y9.x1.load$pval < .05)
+y10.x1.load <- subset(final_data, final_data$param == "L10_1")
+mean(y10.x1.load$pval < .05)
+
+
+y1.x1.load <- subset(final_data, final_data$param == "L1_1")
+mean(y1.x1.load$est)
+y2.x1.load <- subset(final_data, final_data$param == "L2_1")
+mean(y2.x1.load$est)
+y3.x1.load <- subset(final_data, final_data$param == "L3_1")
+mean(y3.x1.load$est)
+y4.x1.load <- subset(final_data, final_data$param == "L4_1")
+mean(y4.x1.load$est)
+y5.x1.load <- subset(final_data, final_data$param == "L5_1")
+mean(y5.x1.load$est)
+y6.x1.load <- subset(final_data, final_data$param == "L6_1")
+mean(y6.x1.load$est)
+y7.x1.load <- subset(final_data, final_data$param == "L7_1")
+mean(y7.x1.load$est)
+y8.x1.load <- subset(final_data, final_data$param == "L8_1")
+mean(y8.x1.load$est)
+y9.x1.load <- subset(final_data, final_data$param == "L9_1")
+mean(y9.x1.load$est)
+y10.x1.load <- subset(final_data, final_data$param == "L10_1")
+mean(y10.x1.load$est)
+
+
+y1.x2.load <- subset(final_data, final_data$param == "L1_2")
+mean(y1.x2.load$est)
+y2.x2.load <- subset(final_data, final_data$param == "L2_2")
+mean(y2.x2.load$est)
+y3.x2.load <- subset(final_data, final_data$param == "L3_2")
+mean(y3.x2.load$est)
+y4.x2.load <- subset(final_data, final_data$param == "L4_2")
+mean(y4.x2.load$est)
+y5.x2.load <- subset(final_data, final_data$param == "L5_2")
+mean(y5.x2.load$est)
+y6.x2.load <- subset(final_data, final_data$param == "L6_2")
+mean(y6.x2.load$est)
+y7.x2.load <- subset(final_data, final_data$param == "L7_2")
+mean(y7.x2.load$est)
+y8.x2.load <- subset(final_data, final_data$param == "L8_2")
+mean(y8.x2.load$est)
+y9.x2.load <- subset(final_data, final_data$param == "L9_2")
+mean(y9.x2.load$est)
+y10.x2.load <- subset(final_data, final_data$param == "L10_2")
+mean(y10.x2.load$est)
+
+
+
+
+
+```

@@ -1,0 +1,42 @@
+[[init]]
+iterators = g b n rep item;
+rep = 1:500;
+item = 1:10;
+g = 1:3;
+b = 1:2;
+n = 1:3;
+filename = "Rep[[rep]]_G[[g]]_B[[b]]_N[[n]]_item[[item]].inp";
+outputDirectory = "C:/Users/colev/Dropbox/collab_2023/Cassi/non-normal/data/G[[g]]_B[[b]]_N[[n]]";
+[[/init]]
+
+TITLE: Test with 10 reps
+
+DATA:
+File is 
+G[[g]]_B[[b]]_N[[n]]_rep[[rep]].csv;
+    
+VARIABLE: 
+    Names are x1 x2 eta 
+	y1 y2 y3 y4 y5 y6 y7 y8 y9 y10;
+    Usevariables are y1-y10 x1 x2;
+
+MODEL:
+    f BY y1* (l1);
+    f BY y2* (l2);
+    f BY y3* (l3);
+    f BY y4* (l4);
+    f BY y5* (l5);
+    f BY y6* (l6);
+    f BY y7* (l7);
+    f BY y8* (l8);
+    f BY y9* (l9);
+    f BY y10* (l10);
+
+y[[item]] ON x1 x2;
+f@1;
+[f@0];
+
+MODEL CONSTRAINT:
+    new (l[[item]]_0 l[[item]]_1 l[[item]]_2);
+    l[[item]] = l[[item]]_0 + l[[item]]_1*x1 + l[[item]]_2*x2;
+

@@ -16,83 +16,6 @@ library(lavaan)
 #Vary the link between eta and ystar - gamma1 and gamma2
 ### 3 Conditions: [.4, .3]; [.8, .6]; [1.6, 1.2]
 # 
-# THE FOLLOWING IS A DEMONSTRATION OF HOW YOU WOULD USE A FOR LOOP HERE
-# YOU WOULD NEST EVERYTHING WITHIN THE FOR LOOP
-# gammas.A <- c(.4, .3)
-# gammas.B <- c(.8, .6)
-# gammas.C <- c(1.6, 1.2)
-# 
-# list.of.gammas <- list(gammas.A, gammas.B, gammas.C)
-# 
-# for (g in 1:3) {
-#   whatever.gamma <- list.of.gammas[[g]]
-#   gamma1 <- whatever.gamma[1]
-#   gamma.2 <- whatever.gamma[2]
-# }
-
-
-#step 1 - generate background variables
-#N <- 1000 #not going to change when we're just looking at histograms
-#list.of.sizes <- c(250, 500, 1000)
-##x1 <- rnorm(N)
-##x2 <- rbinom(N,1,.5) 
-
-
-# b1 <- .1
-# b2 <- .2
-# b3 <- .9
-# 
-# equal1 <- -1.8
-# equal2 <- -0.6
-# equal3 <- 0.6
-# equal4 <- 1.8
-# 
-# mild1 <- -1
-# mild2 <- -0.2
-# mild3 <- 1
-# mild4 <- 2.5
-# 
-# severe1 <- 1
-# severe2 <- 2
-# severe3 <- 2.5
-# severe4 <- 3
-
-
-#step 2 - generate eta
-# eta <- b1*x1 + b2*x2 + b3*rnorm(N)
-
-#step 3 - generate ystar
-
-# gamma1 <- .8
-# gamma2 <- .6
-
-# ystar1 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar2 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar3 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar4 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar5 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar6 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar7 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar8 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar9 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-# ystar10 <- gamma1*eta + gamma2*rnorm(N, 0, sd(eta))
-
-
-#generate y1...y10
-#create lists for varying conditions (thresholds, gammas, betas)
-# thresholds.equal <- c(-1.8, -0.6, 0.6, 1.8)
-# thresholds.mild <- c(-0.2, 1, 1.8, 2.4)
-# thresholds.severe <- c(1, 2, 2.5, 3)
-# list.of.thresholds <- list(thresholds.equal, thresholds.mild, thresholds.severe)
-# 
-# gammas.A <- c(.7, sqrt(.51))
-# gammas.B <- c(.8, .6)
-# gammas.C <- c(.9, sqrt(.19))
-# list.of.gammas <- list(gammas.A, gammas.B, gammas.C)
-# 
-# betas.A <- c(.1, .2, .9)
-# betas.B <- c(.2, .4, .8)
-# list.of.betas <- list(betas.A, betas.B)
 
 #y1, y2, y9, y10 = mild
 #y3, y4, y5 = equal
@@ -103,12 +26,12 @@ library(lavaan)
 #Each will be an N x 10 matrix with above configurations of equal, mild, and severe
 
 #initialize empty list to store datasets
-array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
+#array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 500))
 #When we make it multiple-replications we're going to want to put the iterator for R in there
 #so array(data = NA, dim = c(N, 10, R, 6))
   
     
-
+setwd("C:/Users/colev/Dropbox/collab_2023/Cassi/non-normal/data")
 
 #nested for loop to iterate through conditions
 # for (g in 1:3) {
@@ -265,38 +188,36 @@ array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
       N1 <- c(1, 2, 3)
       for (g in G) {
         if (g == 1) {
-          gammas <- c(1, .01)
-        }
-        else if (g == 2) {
+          gammas <- c(.7, sqrt(.51))
+        } else if (g == 2) {
           gammas <- c(.8, .6)
-        }
-        else {
+        } else {
           gammas <- c(.9, sqrt(.19))
         }
         for (b in B) {
           if (b == 1) {
             betas <- c(.1, .2, .9)
-          }
-          else {
+          } else {
             betas <- c(.2, .4, .8)
           }
           for (n in N1) {
-            if (n == 1) {
-              N <- 250
-            }
-            else if (n == 2) {
-              N <- 500
-            }
-            else {
-              N <- 1000
-            }
-            counter <- (g-1)*6 + (b-1)*3 + n
-            for (c in 1:100) {
+              if (n == 1) {
+                N <- 250
+              } else if (n == 2) {
+                N <- 500
+              } else {
+                N <- 1000
+              }
+          the.directory <- paste0("G",g,"_B",b,"_N",n)
+          if (dir.exists(the.directory) == FALSE) {dir.create(the.directory)}
+          counter <- (g-1)*6 + (b-1)*3 + n
+            for (c in 1:500) {
+              #VTC moved these outside the for loop -- was redefining eta for each column! 
               y.mat <- matrix(NA, N, 10)
+              x1 <- rnorm(N)
+              x2 <- rbinom(N,1,.5) 
+              eta <- betas[[1]]*x1 + betas[[2]]*x2 + betas[[3]]*rnorm(N)
               for (x in 1:10) {
-                x1 <- rnorm(N)
-                x2 <- rbinom(N,1,.5) 
-                eta <- betas[[1]]*x1 + betas[[2]]*x2 + betas[[3]]*rnorm(N)
                 ystar <- gammas[[1]]*eta + gammas[[2]]*rnorm(N, 0, sd(eta))
                 if (x == 1 | x == 2 | x == 9 | x == 10) {
                   threshold.1 <- thresholds.mild[1]
@@ -334,17 +255,18 @@ array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
                     y.mat[a, x] <- 5
                   }
                 }
-                array.of.datasets[1:nrow(y.mat),, counter, c] <- y.mat
+                #array.of.datasets[1:nrow(y.mat),, counter, c] <- y.mat
                 #print(counter)
-                }
-      
-      
-    }
+              }
+              y.mat <- cbind(x1, x2, eta, y.mat)
+              the.filename <- paste0(the.directory, "/", "G",g,"_B",b,"_N",n,"_rep",c,".csv")
+              write.table(y.mat, file = the.filename, sep = ",", row.names = FALSE, col.names = FALSE)
+              }
             }
             #counter <- (g-1)*6 + (b-1)*3 + n
             #print(counter)
-          }
         }
+      }
       #}
       
       #Following line needs to be revised for indexing
@@ -385,6 +307,6 @@ array.of.datasets <- array(data = NA, dim = c(1000, 10, 18, 100))
 confirmatoryFA.model <- 'eta  =~ X1 + X2 + X3 + X4 + X5 + X6 + X7 + X8 + X9 + X10'
 #figure out indexing- currently appears to be first 10 samples of size 250
 y_data <- data.frame(array.of.datasets[,,1,1])
-fit <- cfa(confirmatoryFA.model, y_data)
+fit <- cfa(confirmatoryFA.model, data = y_data)
 
 ```
