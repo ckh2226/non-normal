@@ -15,7 +15,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 final_data <- list()
 
-setwd("C:/Dropbox (Wake Forest University)/collab_2023/Cassi/non-normal/data")
+# setwd("C:/Dropbox (Wake Forest University)/collab_2023/Cassi/non-normal/data")
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 library(MplusAutomation)
 library(tidyverse)
@@ -75,6 +76,8 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -108,6 +111,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -142,6 +146,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -176,6 +181,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -210,6 +216,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -243,6 +250,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -276,6 +284,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -309,6 +318,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -343,6 +353,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -376,6 +387,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -409,6 +421,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -442,6 +455,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -475,6 +489,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -508,6 +523,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -541,6 +557,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -574,6 +591,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -607,6 +625,7 @@ item <- 1:10
 
 data_list <- list()
 
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
 
 for (i in 1:length(reps)) {
   for(j in 1:length(item)) {
@@ -628,4 +647,118 @@ for (i in 1:length(reps)) {
 
 ##rbind data_list
 final_data[[18]] <- rbindlist(data_list)
+
+final_dataframe <- rbindlist(final_data)
 ```
+
+```{r}
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+write.csv(final_dataframe, file="data.csv")
+```
+```{r}
+# Tabulating data
+
+# y1, y2, y9, y10 = mild
+# y3, y4, y5 = equal
+# y6, y7, y8 = severe
+
+library(tidyverse)
+
+# test <- final_data[[1]] |>
+#   filter((item == 6 | item == 7 | item == 8) & str_detect(param, "X2")) |>
+#   summarize(mean_x2 = mean(pval))
+# 
+# g1b1n1_mild <- final_data[[1]] |>
+#   mutate(skew = "mild") |>
+#   filter((item == 1 | item == 2 | item == 9 | item == 10) & !str_detect(param, "_0")) |>
+#   mutate(param1 = case_when(
+#     param == "X1" ~ "X1",
+#     param == "X2" ~ "X2",
+#     str_detect(param, "_1") ~ "L_1",
+#     str_detect(param, "_2") ~ "L_2"
+#   )) |>
+#   group_by(param1, condition, skew) |>
+#   summarize(mean_param = mean(est), mean_pval = mean(pval))
+# 
+# g1b1n1_equal <- final_data[[1]] |>
+#   filter((item == 3 | item == 4 | item == 5) & !str_detect(param, "_0")) |>
+#   mutate(param1 = case_when(
+#     param == "X1" ~ "X1",
+#     param == "X2" ~ "X2",
+#     str_detect(param, "_1") ~ "L_1",
+#     str_detect(param, "_2") ~ "L_2"
+#   )) |>
+#   group_by(param1, condition) |>
+#   summarize(mean = mean(est), mean_pval = mean(pval))
+# 
+# g1b1n1_severe <- final_data[[1]] |>
+#   filter((item == 6 | item == 7 | item == 8) & !str_detect(param, "_0")) |>
+#   mutate(param1 = case_when(
+#     param == "X1" ~ "X1",
+#     param == "X2" ~ "X2",
+#     str_detect(param, "_1") ~ "L_1",
+#     str_detect(param, "_2") ~ "L_2"
+#   )) |>
+#   group_by(param1, condition) |>
+#   summarize(mean = mean(est), mean_pval = mean(pval))
+
+
+
+summarized_data <- list()
+
+for(i in 1:length(final_data)) {
+  
+  # Mean estimates and p-values for mild skew
+  mild <- final_data[[i]] |>
+  mutate(skew = "mild") |>
+  filter((item == 1 | item == 2 | item == 9 | item == 10) & !str_detect(param, "_0")) |>
+  mutate(param1 = case_when(
+    param == "X1" ~ "X1",
+    param == "X2" ~ "X2",
+    str_detect(param, "_1") ~ "L_1",
+    str_detect(param, "_2") ~ "L_2"
+  )) |>
+  group_by(param1, condition, skew) |>
+  summarize(mean_param = mean(est), type1_error_rate = mean(pval < 0.05))
+  
+  summarized_data <- list.append(summarized_data, mild)
+
+   # Mean estimates and p-values for equally distributed
+  equal <- final_data[[i]] |>
+    mutate(skew = "equal") |>
+    filter((item == 3 | item == 4 | item == 5) & !str_detect(param, "_0")) |>
+    mutate(param1 = case_when(
+      param == "X1" ~ "X1",
+      param == "X2" ~ "X2",
+      str_detect(param, "_1") ~ "L_1",
+      str_detect(param, "_2") ~ "L_2"
+    )) |>
+    group_by(param1, condition, skew) |>
+    summarize(mean = mean(est), type1_error_rate = mean(pval < 0.05))
+  
+  summarized_data <- list.append(summarized_data, equal)
+
+  # Mean estimates and p-values for severe skew
+  severe <- final_data[[i]] |>
+    mutate(skew = "severe") |>
+    filter((item == 6 | item == 7 | item == 8) & !str_detect(param, "_0")) |>
+    mutate(param1 = case_when(
+      param == "X1" ~ "X1",
+      param == "X2" ~ "X2",
+      str_detect(param, "_1") ~ "L_1",
+      str_detect(param, "_2") ~ "L_2"
+    )) |>
+    group_by(param1, condition, skew) |>
+    summarize(mean = mean(est), type1_error_rate = mean(pval < 0.05))
+  
+  summarized_data <- list.append(summarized_data, severe)
+  
+}
+
+tabulated_data <- rbindlist(summarized_data)
+
+setwd("/Users/cassandrahung/Documents/GitHub/non-normal/data")
+write.csv(tabulated_data, file="tabulated_data(with error rates).csv")
+  
+```
+
