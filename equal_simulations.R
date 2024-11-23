@@ -7,7 +7,7 @@ m <- 1000
 # Sample size
 N <- 500
 
-# datasets_list <- list()
+datasets_list <- list()
 
 # Set parameters
 thresholds.equal <- c(-1.8, -0.6, 0.6, 1.8)
@@ -42,11 +42,31 @@ for(i in 1:m) {
   datasets_list <- rlist::list.append(datasets_list, data)
 }
 
-setwd("~/Documents/GitHub/non-normal")
-rlist::list.save(datasets_list, "~/Documents/GitHub/non-normal/equal_simulation.rds")
+setwd("C:/Users/colev/Dropbox/collab_2023/Cassi/non-normal")
+# rlist::list.save(datasets_list, "equal_simulation.rds")
 
 # Load and view simulated data
-datasets_list <- readRDS("~/Documents/GitHub/non-normal/equal_simulation.rds")
+datasets_list <- readRDS("equal_simulation.rds")
+
+# Turn datasets into one giant matrix, with 1000 columns and 500 rows
+# Each set of 10 columns should be items 1:10
+datasets_mat <- do.call("cbind", datasets_list)
+
+# Now get this in list format so we can write it out...
+datasets_mat.list <- list()
+for (i in 1:100) {
+  the.indices <- (i-1)*10+1:10
+  datasets_mat.list[[i]] <- datasets_mat[,the.indices]
+}
+
+# Write out all the datasets as *.csv files
+for (r in 1:length(datasets_mat.list)) {
+  write.table(datasets_mat.list[[r]], paste0("data/equal_simulation/equal_simulation_",r, ".csv"), sep = ",", row.names = FALSE, col.names = FALSE)
+}
+
+
+
+
 
 # Randomly select data to view
 par(mfrow = c(2, 2))
